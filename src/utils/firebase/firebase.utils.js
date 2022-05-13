@@ -4,6 +4,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from 'firebase/auth';
 // Doc gets the document, while getDoc gets the data inside the document and setDoc inserts new data
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
@@ -31,6 +32,12 @@ export const signInWithGooglePopup = () =>
 
 // Create the database variable we can use to connect to a database
 export const db = getFirestore();
+
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+
+  return await signInWithEmailAndPassword(auth, email, password);
+};
 
 export const createUserDocumentFromAuth = async (
   userAuth,

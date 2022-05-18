@@ -14,11 +14,7 @@ import './navigation.styles.scss';
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
-  const { isCartOpen, setIsCartOpen } = useContext(CartDropdownContext);
-
-  const handleDropdown = () => {
-    setIsCartOpen(prevState => !prevState)
-  }
+  const { isCartOpen } = useContext(CartDropdownContext);
 
   return (
     <Fragment>
@@ -39,7 +35,7 @@ const Navigation = () => {
               SIGN IN
             </Link>
           )}
-          <span onClick={handleDropdown}><CartIcon /></span>
+          <CartIcon />
         </div>
         {isCartOpen && <CartDropdown />}
       </div>

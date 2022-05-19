@@ -64,6 +64,9 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     totalCartItems(cartItems);
+  }, [cartItems]);
+
+  useEffect(() => {
     totalPriceSum(cartItems);
   }, [cartItems]);
 

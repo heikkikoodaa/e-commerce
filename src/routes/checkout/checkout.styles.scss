@@ -1,0 +1,17 @@
+.checkout-container {
+  min-width: 1080px;
+  max-width: 90vw;
+  margin: 0 auto;
+
+  .headers-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    text-align: center;
+  }
+
+  .total-price {
+    float: right;
+    font-size: 36px;
+    font-weight: bold;
+  }
+}

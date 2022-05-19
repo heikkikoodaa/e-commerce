@@ -24,16 +24,18 @@ const subtractCartItem = (cartItems, productToSubtract) => {
     return cartItem.id === productToSubtract.id;
   });
   // If the product exists, subtract quantity
-  if (existingCartItem) {
-    return cartItems.map((cartItem) =>
-      cartItem.id === productToSubtract.id
-        ? {
-            ...cartItem,
-            quantity: cartItem.quantity && cartItem.quantity - 1,
-          }
-        : cartItem
-    );
+  if (existingCartItem.quantity === 1) {
+    return cartItems.filter((cartItem) => cartItem.id !== productToSubtract.id);
   }
+
+  return cartItems.map((cartItem) =>
+    cartItem.id === productToSubtract.id
+      ? {
+          ...cartItem,
+          quantity: cartItem.quantity && cartItem.quantity - 1,
+        }
+      : cartItem
+  );
 };
 
 const removeCartItem = (cartItems, productToRemove) => {
@@ -87,7 +89,7 @@ export const CartProvider = ({ children }) => {
 
   const totalPriceSum = (cartItems) => {
     const priceSum = cartItems.reduce((totalPrice, cartItem) => {
-      return totalPrice + (cartItem.price * cartItem.quantity);
+      return totalPrice + cartItem.price * cartItem.quantity;
     }, 0);
 
     setTotalPrice(priceSum);

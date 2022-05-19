@@ -3,7 +3,7 @@ import { useContext, useEffect } from 'react';
 import { CartContext } from '../../contexts/cart.context';
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 
-import './checkout.styles.scss';
+import { CheckoutContainer, Headers, TotalPrice } from './checkout.styles';
 
 const Checkout = () => {
   const { cartItems, setIsCartOpen, totalPrice } = useContext(CartContext);
@@ -13,20 +13,20 @@ const Checkout = () => {
   }, [setIsCartOpen]);
 
   return (
-    <div className="checkout-container">
-      <div className="headers-container">
+    <CheckoutContainer>
+      <Headers>
         <span>Product</span>
         <span>Description</span>
         <span>Quantity</span>
         <span>Price</span>
         <span>Remove</span>
-      </div>
+      </Headers>
       <hr />
       {cartItems.map((product) => {
         return <CheckoutItem key={product.id} product={product} />;
       })}
-      <span className="total-price">{`Total $${totalPrice}`}</span>
-    </div>
+      <TotalPrice>{`Total $${totalPrice}`}</TotalPrice>
+    </CheckoutContainer>
   );
 };
 

@@ -23,7 +23,7 @@ const CheckoutItem = ({ product }) => {
       </div>
       <span>{price}</span>
       <span className="remove-button" onClick={handleCartItemRemove}>
-        X
+        &#10005;
       </span>
     </div>
   );

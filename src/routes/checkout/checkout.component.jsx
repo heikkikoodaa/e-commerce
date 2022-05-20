@@ -6,7 +6,7 @@ import CheckoutItem from '../../components/checkout-item/checkout-item.component
 import { CheckoutContainer, Headers, TotalPrice } from './checkout.styles';
 
 const Checkout = () => {
-  const { cartItems, setIsCartOpen, totalPrice } = useContext(CartContext);
+  const { cartItems, setIsCartOpen, cartTotal } = useContext(CartContext);
 
   useEffect(() => {
     setIsCartOpen(false);
@@ -25,7 +25,7 @@ const Checkout = () => {
       {cartItems.map((product) => {
         return <CheckoutItem key={product.id} product={product} />;
       })}
-      <TotalPrice>{`Total $${totalPrice}`}</TotalPrice>
+      <TotalPrice>{`Total $${cartTotal}`}</TotalPrice>
     </CheckoutContainer>
   );
 };

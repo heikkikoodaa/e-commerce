@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const CheckoutContainer = styled.div`
-  min-width: 1080px;
   max-width: 90vw;
   margin: 0 auto;
 `;
